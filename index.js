@@ -9,11 +9,15 @@ const app = express();
 // Conectar a la base de datos
 conectarDB();
 
+// // Habilitar cors
+// const opcionesCors = {
+//     origin: process.env.FRONTEND_URL
+// }
+// app.use( cors(opcionesCors) );
+
 // Habilitar cors
-const opcionesCors = {
-    origin: process.env.FRONTEND_URL
-}
-app.use( cors(opcionesCors) );
+app.use(cors({ credentials: true, origin:true}));
+app.options('*', cors());
 
 // Puerto de la app
 const port = process.env.PORT || 4000;
